@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 trap "echo YAAAAAAAAAAAAAAAAAAAAY WE GOT THE SIGNAL; exit" SIGINT SIGTERM EXIT SIGHUP SIGKILL
 
 while true
