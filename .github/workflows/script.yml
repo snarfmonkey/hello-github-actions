@@ -55,4 +55,4 @@ jobs:
         id: script
         shell: bash
         env:
-          SWEAR_WORD: '${{ inputs.swear_word }}'
+          SWEAR_WORD: 'FUUUUUUUUUUUUUUUUUUUUUUUUUUUU'
