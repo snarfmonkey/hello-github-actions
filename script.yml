@@ -1,0 +1,58 @@
+name: Deploy to Dev EKS
+env:
+  SERVICE_NAME: demo-service
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      swear_word:
+        description: 'The curse you want to hurl into the void.'
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+  deployments: write
+
+jobs:
+  # Debug:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Debug Context
+  #       run: |
+  #         echo "Event name: ${{ github.event_name }}"
+  #         echo "Head ref:   ${{ github.head_ref }}"
+  #         echo "Base ref:   ${{ github.base_ref }}"
+  #         echo "Event name: ${{ github.workflow_run.event_name }}"
+  #         echo "Head ref:   ${{ github.workflow_run.head_ref }}"
+  #         echo "Base ref:   ${{ github.workflow_run.base_ref }}"
+
+  #     - name: Dump GitHub context
+  #       id: github_context_step
+  #       run: echo '${{ toJSON(github) }}'
+  #     - name: Dump job context
+  #       run: echo '${{ toJSON(job) }}'
+  #     - name: Dump steps context
+  #       run: echo '${{ toJSON(steps) }}'
+  #     - name: Dump runner context
+  #       run: echo '${{ toJSON(runner) }}'
+  #     - name: Dump strategy context
+  #       run: echo '${{ toJSON(strategy) }}'
+  #     - name: Dump matrix context
+  #       run: echo '${{ toJSON(matrix) }}'
+
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - run: script.sh
+        id: deploy
+        shell: bash
+        env:
+          SWEAR_WORD: '${{ inputs.swear_word }}'
