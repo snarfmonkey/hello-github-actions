@@ -55,7 +55,7 @@ jobs:
         id: ls
         shell: bash
 
-      - run: script.sh
+      - run: bash -c script.sh
         id: script
         shell: bash
         env:
