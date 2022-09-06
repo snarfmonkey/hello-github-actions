@@ -51,7 +51,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - run: bash -c ./script.sh
+      - run: ./script.sh
         id: script
         shell: bash
         env:
