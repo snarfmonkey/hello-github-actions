@@ -45,14 +45,18 @@ jobs:
   #     - name: Dump matrix context
   #       run: echo '${{ toJSON(matrix) }}'
 
-  Deploy:
+  DoScript:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - run: ls
+        id: script
+        shell: bash
+
       - run: script.sh
-        id: deploy
+        id: script
         shell: bash
         env:
           SWEAR_WORD: '${{ inputs.swear_word }}'
