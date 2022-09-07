@@ -51,8 +51,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - run: ./script.sh
-        id: script
-        shell: bash
+      - name: scriptypoo
+        run: |
+          trap "echo YAAAAAAAAAAAAAAAAAAAAY WE GOT THE SIGNAL; exit" SIGINT SIGTERM EXIT SIGHUP SIGKILL
+
+          while true
+          do
+              echo "${SWEAR_WORD}!!"
+              sleep 1
+          done
         env:
-          SWEAR_WORD: 'FUUUUUUUUUUUUUUUUUUUUUUUUUUUU'
+          SWEAR_WORD: "Kubernetes is for losers!"
